@@ -15,7 +15,7 @@ module.exports = function(grunt) {
     },
     target: {
         command: './node_modules/protractor/bin/webdriver-manager update --standalone',
-        command: 'mkdir -p output'
+        command: 'mkdir -p output/screenshots'
     }
   },
 

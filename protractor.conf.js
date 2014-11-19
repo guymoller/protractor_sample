@@ -12,15 +12,30 @@ exports.config = {
   // Spec patterns are relative to the current working directly when
   // protractor is called.
   specs: ['specs/step*.js'],
-
-  // Options to be passed to Jasmine-node.
+// Options to be passed to Jasmine-node.
   jasmineNodeOpts: {
     showColors: true,
-    defaultTimeoutInterval: 30000
+    defaultTimeoutInterval: 30000,
+    isVerbose : true,
+    includeStackTrace : true
   },
-  onPrepare: function(){
-      // If you need to interact with a non-Angular page, you may access the wrapped webdriver instance
-      // directly with browser.driver. This is a an alias.
-      global.dv = browser.driver;
-  }
+  
+  //multiCapabilities: [{browserName: 'firefox'}, {browserName: 'chrome'}],
+  
+  onPrepare: function() {
+    // The require statement must be down here, since jasmine-reporters
+    // needs jasmine to be in the global and protractor does not guarantee
+    // this until inside the onPrepare function.
+    require('jasmine-reporters');
+    jasmine.getEnv().addReporter(
+      new jasmine.JUnitXmlReporter('output/xml', true, true));
+  },
+
+
+  params: {
+    login: {
+      username: 'guy.moller@gmail.com',
+      password: 'password'
+    }
+  },
 };

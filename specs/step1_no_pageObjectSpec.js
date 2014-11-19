@@ -36,7 +36,7 @@ describe("login tests", function() {
 		submit.click();
 		expect(element(by.css('aside.span4 h1')).getText()).toEqual("Guy Moller");
 		browser.takeScreenshot().then(function (png) {
-			writeScreenShot(png, 'output/after_login.png');
+			writeScreenShot(png, 'output/screenshots/after_login.png');
 		});
 
 	});
