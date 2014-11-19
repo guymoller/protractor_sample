@@ -14,7 +14,8 @@ module.exports = function(grunt) {
         stderr: false
     },
     target: {
-        command: './node_modules/protractor/bin/webdriver-manager update --standalone'
+        command: './node_modules/protractor/bin/webdriver-manager update --standalone',
+        command: 'mkdir -p output'
     }
   },
 
